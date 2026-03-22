@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-cyber-bg text-cyber-text antialiased;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-cyber-card;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-cyber-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-cyber-blue;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-cyber-card bg-opacity-80 backdrop-blur-md border border-cyber-border rounded-2xl;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  }
+
+  .neon-text {
+    @apply text-cyber-blue;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.7);
+  }
+
+  .neon-border {
+    border-color: rgba(0, 212, 255, 0.6);
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
+  }
+
+  .btn-primary {
+    @apply px-6 py-3 rounded-xl font-semibold transition-all duration-200;
+    @apply bg-cyber-blue text-cyber-bg;
+    @apply hover:shadow-neon hover:scale-105 active:scale-95;
+  }
+
+  .btn-danger {
+    @apply px-6 py-3 rounded-xl font-semibold transition-all duration-200;
+    @apply bg-cyber-red text-white;
+    @apply hover:shadow-neon-red hover:scale-105 active:scale-95;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl bg-cyber-bg border border-cyber-border text-cyber-text;
+    @apply placeholder-gray-500 focus:outline-none focus:border-cyber-blue transition-colors;
+  }
+}
+
+.cyber-grid {
+  background-image:
+    linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(0, 212, 255, 0.6); }
+}
+
+.glow-animate {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+@keyframes lock-glow-red {
+  0%, 100% { box-shadow: 0 0 30px rgba(255, 51, 102, 0.4); }
+  50% { box-shadow: 0 0 60px rgba(255, 51, 102, 0.7); }
+}
+
+.lock-glow-red {
+  animation: lock-glow-red 2s ease-in-out infinite;
+}
+
+@keyframes lock-glow-green {
+  0%, 100% { box-shadow: 0 0 30px rgba(0, 255, 136, 0.4); }
+  50% { box-shadow: 0 0 60px rgba(0, 255, 136, 0.7); }
+}
+
+.lock-glow-green {
+  animation: lock-glow-green 2s ease-in-out infinite;
+}
