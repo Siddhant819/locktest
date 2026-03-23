@@ -1,11 +1,12 @@
 import { NavLink } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { LayoutDashboard, FileText, LogOut, ShieldAlert, Wifi } from 'lucide-react'
+import { LayoutDashboard, FileText, LogOut, ShieldAlert, Wifi, Video } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 
 const navItems = [
   { to: '/', icon: LayoutDashboard, label: 'Dashboard', exact: true },
   { to: '/logs', icon: FileText, label: 'Access Logs' },
+  { to: '/live', icon: Video, label: 'Live Camera' },
 ]
 
 export default function Sidebar({ onClose }) {

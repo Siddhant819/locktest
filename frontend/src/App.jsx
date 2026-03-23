@@ -3,6 +3,7 @@ import { AuthProvider, useAuth } from './context/AuthContext'
 import LoginPage from './pages/LoginPage'
 import DashboardPage from './pages/DashboardPage'
 import AccessLogsPage from './pages/AccessLogsPage'
+import LiveCameraPage from './pages/LiveCameraPage'
 import Layout from './components/Layout'
 
 const PrivateRoute = ({ children }) => {
@@ -31,6 +32,13 @@ function AppRoutes() {
         <PrivateRoute>
           <Layout>
             <AccessLogsPage />
+          </Layout>
+        </PrivateRoute>
+      } />
+      <Route path="/live" element={
+        <PrivateRoute>
+          <Layout>
+            <LiveCameraPage />
           </Layout>
         </PrivateRoute>
       } />
