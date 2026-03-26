@@ -3,12 +3,12 @@ import { motion } from 'framer-motion'
 import { Video, VideoOff, Settings, RefreshCw, Maximize2, AlertTriangle, Camera } from 'lucide-react'
 
 const STORAGE_KEY = 'esp32_cam_url'
-const DEFAULT_URL = 'http://192.168.1.100:81/stream'
+const DEFAULT_URL = 'http://192.168.1.143/stream'
 
 export default function LiveCameraPage() {
   const [camUrl, setCamUrl] = useState(() => localStorage.getItem(STORAGE_KEY) || DEFAULT_URL)
   const [inputUrl, setInputUrl] = useState(() => localStorage.getItem(STORAGE_KEY) || DEFAULT_URL)
-  const [streaming, setStreaming] = useState(false)
+  const [streaming, setStreaming] = useState(true)
   const [error, setError] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
   const [fullscreen, setFullscreen] = useState(false)
@@ -38,8 +38,8 @@ export default function LiveCameraPage() {
   }
 
   const handleImgError = () => {
-    setError(true)
-    setStreaming(false)
+    // Don't stop streaming on error for MJPEG streams
+    // they fire onError initially before connecting
   }
 
   const handleFullscreen = () => {
@@ -128,6 +128,7 @@ export default function LiveCameraPage() {
           </div>
         ) : (
           <img
+            key={camUrl}
             ref={imgRef}
             src={camUrl}
             alt="ESP32-CAM live feed"
@@ -205,11 +206,10 @@ export default function LiveCameraPage() {
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={() => setShowSettings(s => !s)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl border transition-all text-sm ${
-              showSettings
-                ? 'bg-cyber-blue/10 border-cyber-blue/40 text-cyber-blue'
-                : 'bg-cyber-card border-cyber-border text-gray-400 hover:text-cyber-text'
-            }`}
+            className={`flex items-center gap-2 px-4 py-2 rounded-xl border transition-all text-sm ${showSettings
+              ? 'bg-cyber-blue/10 border-cyber-blue/40 text-cyber-blue'
+              : 'bg-cyber-card border-cyber-border text-gray-400 hover:text-cyber-text'
+              }`}
           >
             <Settings className="w-4 h-4" />
             Settings
@@ -286,4 +286,4 @@ export default function LiveCameraPage() {
       )}
     </div>
   )
-}
+} 
