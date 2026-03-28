@@ -201,7 +201,7 @@ socket.on('newAccessLog', (log) => {
 
 ## 📟 ESP32-CAM Setup
 
-### Hardware Requirements
+## Hardware Requirements
 
 | Component | Description |
 |-----------|-------------|
@@ -213,7 +213,7 @@ socket.on('newAccessLog', (log) => {
 | Piezo Buzzer | Alarm feedback |
 | 12V power supply | For solenoid lock |
 
-### Wiring
+## Wiring
 
 | ESP32-CAM GPIO | Connected To |
 |----------------|-------------|
